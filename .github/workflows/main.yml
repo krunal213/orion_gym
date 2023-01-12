@@ -45,5 +45,5 @@ jobs:
         uses: mathisve/gdrive-upload-action@main
         with:
           credentials: ${{ secrets.DRIVE_CREDENTIALS }}
-          filename: app/build/outputs/apk/debug/*.apk
+          filename: app/build/outputs/apk/debug/Orion-1.0.apk
           folderId: ${{ secrets.FOLDERID }}
