@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.2796296296296296" />
+        <entry key="app/src/main/res/layout/activity_orion.xml" value="0.14895833333333333" />
+        <entry key="app/src/main/res/layout/content_admission_form.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/content_receipt.xml" value="0.17527173913043478" />
+        <entry key="app/src/main/res/layout/fragment_admission_form.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_orion.xml" value="0.1947463768115942" />
+        <entry key="app/src/main/res/layout/fragment_receipt.xml" value="0.17527173913043478" />
+        <entry key="app/src/main/res/layout/header_gym_name.xml" value="0.22554347826086957" />
+        <entry key="app/src/main/res/layout/layout_admission_form.xml" value="0.17527173913043478" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

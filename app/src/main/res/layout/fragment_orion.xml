@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/dimen_layout_padding"
+    tools:context=".view.OrionFragment">
+
+    <include
+        android:id="@+id/textViewTitle"
+        layout="@layout/content_header"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/title_address"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dimen_subtitle_size"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/textViewTitle" />
+
+    <ImageView
+        android:id="@+id/imageViewGymIcon"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/dimen_image_margin"
+        android:src="@drawable/gym_icon"
+        app:layout_constraintBottom_toTopOf="@id/buttonAdmissionForm"
+        app:layout_constraintTop_toBottomOf="@id/textViewAddress" />
+
+    <Button
+        android:id="@+id/buttonAdmissionForm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_image_margin"
+        android:text="@string/title_admission_form"
+        app:layout_constraintBottom_toTopOf="@id/buttonReceipt"
+        app:layout_constraintTop_toBottomOf="@id/imageViewGymIcon" />
+
+    <Button
+        android:id="@+id/buttonReceipt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_buttons_space"
+        android:text="@string/title_renewal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonAdmissionForm" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

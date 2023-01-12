@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">OrionFitnessClub</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_admission_form">Admission Form</string>
+    <string name="title_receipt">Receipt</string>
+    <string name="title_submit">Share</string>
+    <string name="title_name">Name</string>
+    <string name="title_phone">Phone</string>
+    <string name="title_admission_for">Admission For:</string>
+    <string name="title_gym">GYM</string>
+    <string name="title_cardio">Cardio</string>
+    <string name="title_gym_cardio">GYM + Cardio</string>
+    <string name="title_phone_regex">0123456789</string>
+    <string name="title_amount">Amount</string>
+    <string name="title_orion_fitness_club">Orion Fitness Club</string>
+    <string name="error_invalid_name">Enter Valid Name.</string>
+    <string name="error_invalid_phone_number">Enter Valid Phone Number.</string>
+    <string name="error_invalid_admission">Enter Valid Admission.</string>
+    <string name="error_invalid_amount">Enter Valid Amount.</string>
+    <string name="title_monthly">MONTHLY</string>
+    <string name="title_qly">QLY</string>
+    <string name="title_hly">HLY</string>
+    <string name="title_yearly">YEARLY</string>
+    <string name="title_admission_date">Admission Date</string>
+    <string name="title_next_renewal_date">Next Renewal Date</string>
+    <string name="title_admission_no">Admission No : %1$s</string>
+    <string name="title_renewal">Renewal</string>
+    <string name="title_address">Sai Nagar 1,Hudkeshwar Rd,Nagpur</string>
+</resources>

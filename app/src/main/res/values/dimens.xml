@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="dimen_buttons_space">8dp</dimen>
+    <dimen name="dimen_layout_padding">16dp</dimen>
+    <dimen name="dimen_buttons_space_admission_form">16dp</dimen>
+    <dimen name="dimen_title_size">36sp</dimen>
+    <dimen name="dimen_subtitle_size">16dp</dimen>
+    <dimen name="dimen_logo_height">240dp</dimen>
+    <dimen name="dimen_image_margin">24dp</dimen>
+</resources>

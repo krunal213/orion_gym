@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_orion"
+    app:startDestination="@id/orionFragment">
+
+    <fragment
+        android:id="@+id/admissionFormFragment"
+        android:name="com.app.orion.view.AdmissionFormPreviewFragment"
+        android:label="fragment_admission_form"
+        tools:layout="@layout/fragment_admission_form" />
+    <fragment
+        android:id="@+id/orionFragment"
+        android:name="com.app.orion.view.OrionFragment"
+        android:label="fragment_orion"
+        tools:layout="@layout/fragment_orion">
+        <action
+            android:id="@+id/action_orionFragment_to_admissionFormFragment"
+            app:destination="@id/admissionFormFragment" />
+        <action
+            android:id="@+id/action_orionFragment_to_receiptFormFragment"
+            app:destination="@id/receiptFormFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/receiptFormFragment"
+        android:name="com.app.orion.view.RenewalFragment"
+        android:label="ReceiptFormFragment" />
+</navigation>
