@@ -42,8 +42,8 @@ jobs:
         run: ./gradlew assembleDebug --stacktrace
         
       - name: Upload to gdrive
-        uses: mathisve/gdrive-upload-action@main
+        uses: willo32/google-drive-upload-action@v1
         with:
+          target: app/build/outputs/apk/debug/Orion-1.0.apk
           credentials: ${{ secrets.DRIVE_CREDENTIALS }}
-          filename: Orion-1.0.apk
-          folderId: ${{ secrets.FOLDERID }}
+          parent_folder_id: ${{ secrets.FOLDERID }}
