@@ -40,13 +40,7 @@ jobs:
 
       - name: Build debug APK
         run: ./gradlew assembleDebug --stacktrace
-    
-      - name: Upload APK
-        uses: actions/upload-artifact@v2
-        with:
-          name: Orion GYM.apk
-          path: app/build/outputs/apk/debug/*.apk
-          
+        
       - name: Upload to gdrive
         uses: adityak74/google-drive-upload-git-action@main
         with:
