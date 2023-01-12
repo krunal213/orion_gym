@@ -21,13 +21,6 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
-        debug {
-            android.applicationVariants.all { variant ->
-                variant.outputs.all {
-                    outputFileName = "Orion-${variant.versionName}.apk"
-                }
-            }
-        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
