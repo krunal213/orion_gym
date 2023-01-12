@@ -51,6 +51,6 @@ jobs:
         uses: adityak74/google-drive-upload-git-action@main
         with:
           credentials: ${{ secrets.credentials }}
-          filename: "Orion GYM.apk"
+          filename: app/build/outputs/apk/debug/*.apk
           folderId: ${{ secrets.folderId }}
           overwrite: "true"    
