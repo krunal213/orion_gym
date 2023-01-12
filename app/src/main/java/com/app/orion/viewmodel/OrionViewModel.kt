@@ -71,7 +71,7 @@ class OrionViewModel(application: Application) : AndroidViewModel(application) {
 
     fun getCurrentDateAndTime(): String =
         SimpleDateFormat("dd-MM-yyyy HH:mm a").format(Calendar.getInstance().time)
-    
+
     fun convertIntoDate(long: Long): String =
         SimpleDateFormat("dd-MM-yyyy").format(Date(long))
 
