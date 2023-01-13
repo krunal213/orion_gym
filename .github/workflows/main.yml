@@ -46,4 +46,4 @@ jobs:
         with:
           credentials: ${{ secrets.DRIVE_CREDENTIALS }}
           filename: app/build/outputs/apk/debug/Orion-1.0.apk
-          folder: ${{ secrets.FOLDERID }}
+          folderId: ${{ secrets.FOLDERID }}
