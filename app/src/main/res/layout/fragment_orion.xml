@@ -28,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/dimen_image_margin"
-        android:src="@drawable/gym_icon"
+        android:src="@drawable/ic_orion_fitness_club"
         app:layout_constraintBottom_toTopOf="@id/buttonAdmissionForm"
         app:layout_constraintTop_toBottomOf="@id/textViewAddress" />
 
