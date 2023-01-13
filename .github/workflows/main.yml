@@ -40,10 +40,16 @@ jobs:
 
       - name: Build debug APK
         run: ./gradlew assembleDebug --stacktrace
+        
+      - name: Convert to zip
+        uses: vimtor/action-zip@v1
+        with:
+          files: app/build/outputs/apk/debug/Orion-1.0.apk
+          dest: result.zip  
 
       - name: Upload to gdrive
         uses: Jodebu/upload-to-drive@master
         with:
-          target: app/build/outputs/apk/debug/Orion-1.0.apk
+          target: result.zip
           credentials: ${{ secrets.DRIVE_CREDENTIALS }}
           folder: ${{ secrets.FOLDERID }}
