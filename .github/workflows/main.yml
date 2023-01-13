@@ -44,6 +44,6 @@ jobs:
       - name: Upload to gdrive
         uses: Jodebu/upload-to-drive@master
         with:
-          credentials: ${{ secrets.DRIVE_CREDENTIALS }}
           target: app/build/outputs/apk/debug/Orion-1.0.apk
-          folderId: ${{ secrets.FOLDERID }}
+          credentials: ${{ secrets.DRIVE_CREDENTIALS }}
+          folder: ${{ secrets.FOLDERID }}
