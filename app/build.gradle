@@ -24,7 +24,7 @@ android {
         debug {
             android.applicationVariants.all { variant ->
                 variant.outputs.all {
-                    outputFileName = "Orion-${variant.versionName}.apk"
+                    outputFileName = "Orion-${variant.versionCode}.apk"
                 }
             }
         }
