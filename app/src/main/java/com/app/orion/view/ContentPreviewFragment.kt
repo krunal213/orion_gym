@@ -12,6 +12,7 @@ import com.app.orion.exception.InvalidAmountException
 import com.app.orion.exception.InvalidNameException
 import com.app.orion.exception.InvalidPhoneNumberException
 import com.app.orion.viewmodel.OrionViewModel
+import com.gkemon.XMLtoPDF.PdfGenerator
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.DateValidatorPointForward
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -112,7 +113,7 @@ abstract class ContentPreviewFragment : Fragment() {
                             with(activity as AppCompatActivity) {
                                 window.decorView.findViewById<View>(android.R.id.content)
                                     .clearFocus()
-                                generatePdf(view.findViewById(R.id.root))
+                                generatePdfWithShare(view.findViewById(R.id.root))
                             }
                         }
                         is Result.Error -> {
@@ -131,10 +132,7 @@ abstract class ContentPreviewFragment : Fragment() {
                         }
                     }
                 }
-
             }
-
-
     }
 
     abstract fun getSubtitle() : String
