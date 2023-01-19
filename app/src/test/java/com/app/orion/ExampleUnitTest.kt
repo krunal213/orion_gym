@@ -10,17 +10,11 @@ import org.junit.Assert.*
  * See [testing documentation](http://d.android.com/tools/testing).
  */
 class ExampleUnitTest {
-    @Test
-    fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
-    }
-
 
     @Test
     fun or_operator_test() {
         val data = "GYM"
         val reuslt = arrayListOf<String>("GYM","Cardio","GYM + Cardio").contains(data)
         println(reuslt)
-
     }
 }

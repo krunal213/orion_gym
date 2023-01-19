@@ -1,14 +1,11 @@
 package com.app.orion.viewmodel
 
-import com.app.orion.BuildConfig
 import com.app.orion.Result
 import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.RuntimeEnvironment
-import org.robolectric.annotation.Config
-
 
 @RunWith(RobolectricTestRunner::class)
 class OrionViewModelTest {
