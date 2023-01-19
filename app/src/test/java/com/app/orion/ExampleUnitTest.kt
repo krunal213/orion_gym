@@ -14,7 +14,7 @@ class ExampleUnitTest {
     @Test
     fun or_operator_test() {
         val data = "GYM"
-        val reuslt = arrayListOf<String>("GYM","Cardio","GYM + Cardio").contains(data)
-        println(reuslt)
+        val result = arrayListOf<String>("GYM","Cardio","GYM + Cardio").contains(data)
+        assertTrue(result)
     }
 }
