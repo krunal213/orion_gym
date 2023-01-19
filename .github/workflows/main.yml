@@ -37,7 +37,4 @@ jobs:
         with:
           java-version: 11
           
-      - name: Extract version from tag
-        uses: damienaicheh/extract-version-from-tag-action@v1.0.0    
-          
       
