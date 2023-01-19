@@ -41,4 +41,18 @@ jobs:
           build-gradle-path: './app/build.gradle'
           version-code: ${{ env.NUMBER_OF_COMMITS }}
           version-name: '${{ env.MAJOR }}.${{ env.MINOR }}.${{ env.PATCH }}'
-          print-file: true  
+          print-file: true
+      
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+
+      - name: Build debug APK
+        run: ./gradlew assembleDebug --stacktrace
+        
+      - name: Upload to gdrive
+        uses: adityak74/google-drive-upload-git-action@main
+        with:
+          credentials: ${{ secrets.DRIVE_CREDENTIALS }}
+          filename: app/build/outputs/apk/debug/*.apk  
+          folderId: ${{ secrets.FOLDERID }}
+          overwrite: "true"
