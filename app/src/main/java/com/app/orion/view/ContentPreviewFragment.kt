@@ -31,6 +31,7 @@ abstract class ContentPreviewFragment : Fragment() {
         val ediTextName = view.findViewById<EditText>(R.id.editTextName)
         val editTextPhone = view.findViewById<EditText>(R.id.editTextPhone)
         val radioGroupAdmissionFor = view.findViewById<RadioGroup>(R.id.radioGroupAdmissionFor)
+        val radioGroupForYear = view.findViewById<RadioGroup>(R.id.radioGroupForYear)
         val editTextAmount = view.findViewById<EditText>(R.id.editTextAmount)
         val textInputLayoutName = view.findViewById<TextInputLayout>(R.id.textInputLayoutName)
         val textInputLayoutPhone = view.findViewById<TextInputLayout>(R.id.textInputLayoutPhone)
@@ -105,6 +106,10 @@ abstract class ContentPreviewFragment : Fragment() {
                     radioGroupAdmissionFor
                         .findViewById<RadioButton>(
                             radioGroupAdmissionFor.checkedRadioButtonId
+                        )?.text.toString().trim(),
+                    radioGroupForYear
+                        .findViewById<RadioButton>(
+                            radioGroupForYear.checkedRadioButtonId
                         )?.text.toString().trim(),
                     editTextAmount.text.toString().trim(),
                 ).apply {

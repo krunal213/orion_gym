@@ -3,16 +3,11 @@ package com.app.orion.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import com.app.orion.R
-import com.app.orion.exception.InvalidNameException
 import com.app.orion.Result
 import com.app.orion.Result.Success
 import com.app.orion.Result.Error
-import com.app.orion.exception.InvalidAdmissionException
-import com.app.orion.exception.InvalidAmountException
-import com.app.orion.exception.InvalidPhoneNumberException
+import com.app.orion.exception.*
 import java.text.SimpleDateFormat
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlin.random.Random
 
@@ -22,6 +17,7 @@ class OrionViewModel(application: Application) : AndroidViewModel(application) {
         name: String,
         phone: String,
         admissionFor: String,
+        duration: String,
         amount: String
     ): Result<*> = try {
         if (name.trim().isEmpty()) {
@@ -43,6 +39,27 @@ class OrionViewModel(application: Application) : AndroidViewModel(application) {
                 getApplication<Application>()
                     .resources
                     .getString(R.string.error_invalid_admission)
+            )
+        }
+        if(isNotAvailableAdmissionForIsSelected(admissionFor)){
+            throw InvalidAdmissionException(
+                getApplication<Application>()
+                    .resources
+                    .getString(R.string.error_invalid_admission)
+            )
+        }
+        if (duration.trim().isEmpty()) {
+            throw InvalidDurationException(
+                getApplication<Application>()
+                    .resources
+                    .getString(R.string.error_invalid_duration)
+            )
+        }
+        if (isNotAvailableDurationIsSelected(duration)) {
+            throw InvalidDurationException(
+                getApplication<Application>()
+                    .resources
+                    .getString(R.string.error_invalid_duration)
             )
         }
         if (amount.trim().isEmpty()) {
@@ -74,5 +91,20 @@ class OrionViewModel(application: Application) : AndroidViewModel(application) {
 
     fun convertIntoDate(long: Long): String =
         SimpleDateFormat("dd-MM-yyyy").format(Date(long))
+
+    private fun isNotAvailableAdmissionForIsSelected(admissionFor: String) =
+        !arrayListOf(
+            getApplication<Application>().resources.getString(R.string.title_gym),
+            getApplication<Application>().resources.getString(R.string.title_cardio),
+            getApplication<Application>().resources.getString(R.string.title_gym_cardio)
+        ).contains(admissionFor)
+
+    private fun isNotAvailableDurationIsSelected(duration: String) =
+        !arrayListOf(
+            getApplication<Application>().resources.getString(R.string.title_monthly),
+            getApplication<Application>().resources.getString(R.string.title_qly),
+            getApplication<Application>().resources.getString(R.string.title_hly),
+            getApplication<Application>().resources.getString(R.string.title_yearly)
+        ).contains(duration)
 
 }
