@@ -76,6 +76,8 @@ class OrionViewModel(application: Application) : AndroidViewModel(application) {
         Error(ex)
     } catch (ex: InvalidAdmissionException) {
         Error(ex)
+    }  catch (ex: InvalidDurationException) {
+        Error(ex)
     } catch (ex: InvalidAmountException) {
         Error(ex)
     }
