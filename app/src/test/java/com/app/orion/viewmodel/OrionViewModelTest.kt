@@ -1,6 +1,8 @@
 package com.app.orion.viewmodel
 
 import com.app.orion.BuildConfig
+import com.app.orion.Result
+import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
@@ -20,8 +22,8 @@ class OrionViewModelTest {
             "GYM",
             "XY",
             "1221"
-        )
-        println(result)
+        ) as Result.Error
+        Assert.assertEquals("Enter Valid Duration.",result.exception.message)
     }
 
 }
