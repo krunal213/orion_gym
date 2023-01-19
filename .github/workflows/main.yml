@@ -35,11 +35,13 @@ jobs:
         with:
           java-version: 11
           
-      - name: Bump version
-        uses: chkfung/android-version-actions@v1.2.1
+      - name: Update gradle version for Android
+        uses: damienaicheh/update-android-version-gradle-action@v1.0.0
         with:
-          gradlePath: app/build.gradle
-          versionCode: ${{github.run_number}}    
+          build-gradle-path: './app/build.gradle'
+          version-code: ${{ env.NUMBER_OF_COMMITS }}
+          version-name: '${{ env.MAJOR }}.${{ env.MINOR }}.${{ env.PATCH }}'
+          print-file: true 
 
       - name: Make gradlew executable
         run: chmod +x ./gradlew
