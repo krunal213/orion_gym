@@ -1,32 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/dimen_layout_padding">
 
-    <include
-        layout="@layout/content_header"
-        android:id="@+id/textViewTitle"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textViewSubtitle"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textColor="@color/black"
-        android:textSize="@dimen/dimen_subtitle_size"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/textViewTitle" />
+        android:background="@color/white"
+        app:elevation="0dp">
+
+        <include
+            layout="@layout/content_header"
+            android:id="@+id/textViewTitle"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewSubtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen_subtitle_size"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/textViewTitle" />
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fillViewport="true"
+        android:layout_height="match_parent"
         android:overScrollMode="never"
-        app:layout_constraintTop_toBottomOf="@id/textViewSubtitle">
+        android:scrollbars="vertical"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -41,7 +51,7 @@
 
                 <TextView
                     android:id="@+id/textViewAdmissionNo"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/title_admission_no"
                     app:layout_constraintLeft_toLeftOf="parent"
@@ -211,4 +221,4 @@
 
     </androidx.core.widget.NestedScrollView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
