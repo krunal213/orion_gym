@@ -11,8 +11,8 @@ import com.app.orion.Result
 import com.app.orion.exception.InvalidAmountException
 import com.app.orion.exception.InvalidNameException
 import com.app.orion.exception.InvalidPhoneNumberException
+import com.app.orion.generatePdfFromHTML
 import com.app.orion.viewmodel.OrionViewModel
-import com.gkemon.XMLtoPDF.PdfGenerator
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.DateValidatorPointForward
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -40,8 +40,10 @@ abstract class ContentPreviewFragment : Fragment() {
         val editTextNextRenewalDate = view.findViewById<EditText>(R.id.editTextNextRenewalDate)
 
         textViewSubtitle.text = getSubtitle()
-        textViewAdmissionNo.text = orionViewModel?.getAdmissionNo()
-        textViewAdmissionDate.text = orionViewModel?.getCurrentDateAndTime()
+        val admissionNumber = orionViewModel?.getAdmissionNo()
+        textViewAdmissionNo.text = admissionNumber
+        val todayDate = orionViewModel?.getCurrentDateAndTime()
+        textViewAdmissionDate.text = todayDate
 
         with(ediTextName) {
             addTextChangedListener {
@@ -58,16 +60,17 @@ abstract class ContentPreviewFragment : Fragment() {
                 textInputLayoutAmount.error = null
             }
         }
-        with(editTextAdmissionDate){
+        with(editTextAdmissionDate) {
             isFocusable = false
             isClickable = true
             setOnClickListener {
                 fragmentManager?.let { fragmentManager ->
                     with(
                         MaterialDatePicker.Builder.datePicker()
-                        .setTitleText(resources.getString(R.string.title_admission_date))
-                        .build()){
-                        show(fragmentManager,"tag")
+                            .setTitleText(resources.getString(R.string.title_admission_date))
+                            .build()
+                    ) {
+                        show(fragmentManager, "tag")
                         addOnPositiveButtonClickListener {
                             editTextAdmissionDate.setText(orionViewModel?.convertIntoDate(it))
                         }
@@ -75,21 +78,22 @@ abstract class ContentPreviewFragment : Fragment() {
                 }
             }
         }
-        with(editTextNextRenewalDate){
+        with(editTextNextRenewalDate) {
             isFocusable = false
             isClickable = true
             setOnClickListener {
                 fragmentManager?.let { fragmentManager ->
                     with(
                         MaterialDatePicker.Builder.datePicker()
-                        .setTitleText(resources.getString(R.string.title_next_renewal_date))
-                        .setCalendarConstraints(
-                            CalendarConstraints.Builder()
-                                .setValidator(DateValidatorPointForward.now())
-                                .build()
-                        )
-                        .build()){
-                        show(fragmentManager,"tag")
+                            .setTitleText(resources.getString(R.string.title_next_renewal_date))
+                            .setCalendarConstraints(
+                                CalendarConstraints.Builder()
+                                    .setValidator(DateValidatorPointForward.now())
+                                    .build()
+                            )
+                            .build()
+                    ) {
+                        show(fragmentManager, "tag")
                         addOnPositiveButtonClickListener {
                             editTextNextRenewalDate.setText(orionViewModel?.convertIntoDate(it))
                         }
@@ -101,24 +105,31 @@ abstract class ContentPreviewFragment : Fragment() {
         view.findViewById<Button>(R.id.buttonSubmit)
             .setOnClickListener {
                 orionViewModel?.validateAdmissionForm(
-                    ediTextName.text.toString().trim(),
-                    editTextPhone.text.toString().trim(),
-                    radioGroupAdmissionFor
+                    admissionNumber = admissionNumber.toString(),
+                    todayDate = todayDate.toString(),
+                    name = ediTextName.text.toString().trim(),
+                    phone = editTextPhone.text.toString().trim(),
+                    admissionFor = radioGroupAdmissionFor
                         .findViewById<RadioButton>(
                             radioGroupAdmissionFor.checkedRadioButtonId
                         )?.text.toString().trim(),
-                    radioGroupForYear
+                    duration = radioGroupForYear
                         .findViewById<RadioButton>(
                             radioGroupForYear.checkedRadioButtonId
                         )?.text.toString().trim(),
-                    editTextAmount.text.toString().trim(),
+                    admissionDate = editTextAdmissionDate.text.toString().trim(),
+                    newRenewalDate = editTextNextRenewalDate.text.toString().trim(),
+                    amount = editTextAmount.text.toString().trim(),
                 ).apply {
                     when (this) {
                         is Result.Success -> {
                             with(activity as AppCompatActivity) {
                                 window.decorView.findViewById<View>(android.R.id.content)
                                     .clearFocus()
-                                generatePdfWithShare(view.findViewById(R.id.root))
+                                generatePdfFromHTML(
+                                    data,
+                                    "${ediTextName.text.toString().trim()}_$todayDate"
+                                )
                             }
                         }
                         is Result.Error -> {
@@ -140,6 +151,6 @@ abstract class ContentPreviewFragment : Fragment() {
             }
     }
 
-    abstract fun getSubtitle() : String
+    abstract fun getSubtitle(): String
 
 }

@@ -28,4 +28,5 @@
     <string name="title_renewal">Renewal</string>
     <string name="title_address">Sai Nagar 1,Hudkeshwar Rd,Nagpur</string>
     <string name="error_invalid_duration">Enter Valid Duration.</string>
+    <string name="error_something_went_wrong">Something went wrong.</string>
 </resources>
