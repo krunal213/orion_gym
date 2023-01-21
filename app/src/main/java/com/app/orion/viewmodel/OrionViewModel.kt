@@ -7,6 +7,7 @@ import com.app.orion.Result
 import com.app.orion.Result.Success
 import com.app.orion.Result.Error
 import com.app.orion.exception.*
+import org.jsoup.Jsoup
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.random.Random
@@ -14,12 +15,30 @@ import kotlin.random.Random
 class OrionViewModel(application: Application) : AndroidViewModel(application) {
 
     fun validateAdmissionForm(
+        admissionNumber : String,
+        todayDate: String,
         name: String,
         phone: String,
         admissionFor: String,
         duration: String,
+        admissionDate: String,
+        newRenewalDate: String,
         amount: String
-    ): Result<*> = try {
+    ): Result<String> = try {
+        if(admissionNumber.trim().isEmpty()){
+            throw SomethingWentWrongException(
+                getApplication<Application>()
+                    .resources
+                    .getString(R.string.error_something_went_wrong)
+            )
+        }
+        if(todayDate.trim().isEmpty()){
+            throw SomethingWentWrongException(
+                getApplication<Application>()
+                    .resources
+                    .getString(R.string.error_something_went_wrong)
+            )
+        }
         if (name.trim().isEmpty()) {
             throw InvalidNameException(
                 getApplication<Application>()
@@ -62,6 +81,20 @@ class OrionViewModel(application: Application) : AndroidViewModel(application) {
                     .getString(R.string.error_invalid_duration)
             )
         }
+        if(admissionDate.trim().isEmpty()){
+            throw SomethingWentWrongException(
+                getApplication<Application>()
+                    .resources
+                    .getString(R.string.error_something_went_wrong)
+            )
+        }
+        if(newRenewalDate.trim().isEmpty()){
+            throw SomethingWentWrongException(
+                getApplication<Application>()
+                    .resources
+                    .getString(R.string.error_something_went_wrong)
+            )
+        }
         if (amount.trim().isEmpty()) {
             throw InvalidAmountException(
                 getApplication<Application>()
@@ -69,7 +102,17 @@ class OrionViewModel(application: Application) : AndroidViewModel(application) {
                     .getString(R.string.error_invalid_amount)
             )
         }
-        Success(null)
+        Success(fetchAdmissionReceipt(
+            admissionNumber,
+            todayDate,
+            name,
+            phone,
+            admissionFor,
+            duration,
+            admissionDate,
+            newRenewalDate,
+            amount
+        ))
     } catch (ex: InvalidNameException) {
         Error(ex)
     } catch (ex: InvalidPhoneNumberException) {
@@ -80,6 +123,8 @@ class OrionViewModel(application: Application) : AndroidViewModel(application) {
         Error(ex)
     } catch (ex: InvalidAmountException) {
         Error(ex)
+    } catch (ex: SomethingWentWrongException){
+        Error(ex)
     }
 
     fun getAdmissionNo(): CharSequence =
@@ -89,7 +134,7 @@ class OrionViewModel(application: Application) : AndroidViewModel(application) {
         )
 
     fun getCurrentDateAndTime(): String =
-        SimpleDateFormat("dd-MM-yyyy HH:mm a").format(Calendar.getInstance().time)
+        SimpleDateFormat("dd-MM-yyyy hh:mm a").format(Calendar.getInstance().time)
 
     fun convertIntoDate(long: Long): String =
         SimpleDateFormat("dd-MM-yyyy").format(Date(long))
@@ -108,5 +153,33 @@ class OrionViewModel(application: Application) : AndroidViewModel(application) {
             getApplication<Application>().resources.getString(R.string.title_hly),
             getApplication<Application>().resources.getString(R.string.title_yearly)
         ).contains(duration)
+
+    private fun fetchAdmissionReceipt(
+        admissionNumber : String,
+        todayDate : String,
+        name: String,
+        phone: String,
+        admissionFor: String,
+        duration: String,
+        admissionDate: String,
+        newRenewalDate: String,
+        amount: String
+    ) : String {
+        val htmlString = getApplication<Application>().assets.open("admissionFor.html").bufferedReader().use {
+            it.readText()
+        }
+        val doc = Jsoup.parse(htmlString)
+        doc.getElementById("sr_no").appendText(admissionNumber.toString().trim())
+        doc.getElementById("date").appendText(todayDate.trim())
+        doc.getElementById("name").appendText(name.trim())
+        doc.getElementById("phone").appendText(phone.trim())
+        doc.getElementById("admission_for").appendText(admissionFor.trim())
+        doc.getElementById("duration").appendText(duration.trim())
+        doc.getElementById("admission_date").appendText(admissionDate.trim())
+        doc.getElementById("new_renewal_date").appendText(newRenewalDate.trim())
+        doc.getElementById("amount").appendText(amount.trim())
+        return doc.toString()
+    }
+
 
 }
