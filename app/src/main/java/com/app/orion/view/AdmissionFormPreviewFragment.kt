@@ -26,7 +26,7 @@ class AdmissionFormPreviewFragment : ContentPreviewFragment() {
         savedInstanceState: Bundle?
     ): View = inflater.inflate(R.layout.fragment_admission_form, container, false)
 
-    override fun getSubtitle(): String = resources.getString(R.string.title_receipt)
+    override fun getSubtitle(): String = resources.getString(R.string.title_admission_form)
 
 
 }
