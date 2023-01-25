@@ -86,11 +86,6 @@ abstract class ContentPreviewFragment : Fragment() {
                     with(
                         MaterialDatePicker.Builder.datePicker()
                             .setTitleText(resources.getString(R.string.title_next_renewal_date))
-                            .setCalendarConstraints(
-                                CalendarConstraints.Builder()
-                                    .setValidator(DateValidatorPointForward.now())
-                                    .build()
-                            )
                             .build()
                     ) {
                         show(fragmentManager, "tag")

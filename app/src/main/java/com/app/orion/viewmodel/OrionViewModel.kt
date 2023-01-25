@@ -130,7 +130,7 @@ class OrionViewModel(application: Application) : AndroidViewModel(application) {
     fun getAdmissionNo(): CharSequence =
         getApplication<Application>().resources.getString(
             R.string.title_admission_no,
-            Random(Int.MAX_VALUE).nextInt().toString()
+            System.currentTimeMillis().toString()
         )
 
     fun getCurrentDateAndTime(): String =
