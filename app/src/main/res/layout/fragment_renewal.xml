@@ -8,6 +8,7 @@
     tools:context=".view.AdmissionFormPreviewFragment">
 
     <include
+        android:id="@+id/content_preview"
         layout="@layout/content_preview"
         android:layout_width="match_parent"
         android:layout_height="0dp"

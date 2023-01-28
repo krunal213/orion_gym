@@ -1,11 +1,9 @@
-package com.app.orion
+package com.app.orion_gym
 
 import androidx.appcompat.app.AppCompatActivity
 import android.content.Intent
-import android.net.Uri
 import java.io.File
 import android.print.PDFPrint.OnPDFPrintListener
-import androidx.appcompat.app.AlertDialog
 import com.tejpratapsingh.pdfcreator.utils.PDFUtil
 import com.tejpratapsingh.pdfcreator.utils.FileManager
 import androidx.core.content.FileProvider

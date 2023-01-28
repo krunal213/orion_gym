@@ -1,4 +1,4 @@
-package com.app.orion
+package com.app.orion_gym
 
 sealed class Result<out T> {
     data class Success<out T>(val data : T) : Result<T>()

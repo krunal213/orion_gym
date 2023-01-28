@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "924351047213",
+    "firebase_url": "https://orion-gym-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "orion-gym",
+    "storage_bucket": "orion-gym.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:924351047213:android:1f4aa9fd7a0576a5573aa4",
+        "android_client_info": {
+          "package_name": "com.app.orion_gym"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "924351047213-nu2dmetc7o5b5rspc82tlevj5irr3e6j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.orion_gym",
+            "certificate_hash": "37cff3e3915deb7a55ee537e7b117fd3b18607a0"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC36t2TVQcaWgfXBE48_ZEVjCv_E10KkUs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

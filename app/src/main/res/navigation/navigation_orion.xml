@@ -4,15 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_orion"
     app:startDestination="@id/orionFragment">
-
     <fragment
         android:id="@+id/admissionFormFragment"
-        android:name="com.app.orion.view.AdmissionFormPreviewFragment"
+        android:name="com.app.orion_gym.view.AdmissionFormPreviewFragment"
         android:label="fragment_admission_form"
         tools:layout="@layout/fragment_admission_form" />
     <fragment
         android:id="@+id/orionFragment"
-        android:name="com.app.orion.view.OrionFragment"
+        android:name="com.app.orion_gym.view.OrionFragment"
         android:label="fragment_orion"
         tools:layout="@layout/fragment_orion">
         <action
@@ -24,6 +23,7 @@
     </fragment>
     <fragment
         android:id="@+id/receiptFormFragment"
-        android:name="com.app.orion.view.RenewalFragment"
-        android:label="ReceiptFormFragment" />
+        android:name="com.app.orion_gym.view.RenewalFragment"
+        android:label="ReceiptFormFragment"
+        tools:layout="@layout/fragment_renewal"/>
 </navigation>

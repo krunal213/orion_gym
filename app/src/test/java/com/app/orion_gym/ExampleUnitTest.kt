@@ -1,4 +1,4 @@
-package com.app.orion
+package com.app.orion_gym
 
 import org.junit.Test
 
