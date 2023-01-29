@@ -6,11 +6,15 @@
         <entry key="../../../../layout/custom_preview.xml" value="0.2796296296296296" />
         <entry key="app/src/main/res/layout/activity_orion.xml" value="0.14895833333333333" />
         <entry key="app/src/main/res/layout/content_admission_form.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/content_header.xml" value="0.2033514492753623" />
         <entry key="app/src/main/res/layout/content_preview.xml" value="0.213768115942029" />
         <entry key="app/src/main/res/layout/content_receipt.xml" value="0.17527173913043478" />
+        <entry key="app/src/main/res/layout/dialog_progress_bar.xml" value="0.21693840579710144" />
         <entry key="app/src/main/res/layout/fragment_admission_form.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_google_sign_in.xml" value="0.22192028985507245" />
         <entry key="app/src/main/res/layout/fragment_orion.xml" value="0.1947463768115942" />
         <entry key="app/src/main/res/layout/fragment_receipt.xml" value="0.17527173913043478" />
+        <entry key="app/src/main/res/layout/fragment_renewal.xml" value="0.2368659420289855" />
         <entry key="app/src/main/res/layout/header_gym_name.xml" value="0.22554347826086957" />
         <entry key="app/src/main/res/layout/layout_admission_form.xml" value="0.17527173913043478" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2984375" />
