@@ -1,5 +1,6 @@
 package com.app.orion_gym.view
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -60,7 +61,6 @@ class OrionFragment : Fragment() {
             requireActivity(),
             GoogleSignInOptions
                 .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(activity?.resources?.getString(R.string.server_client_id) as String)
                 .requestEmail()
                 .requestScopes(Scope(SheetsScopes.SPREADSHEETS))
                 .requestScopes(Scope(SheetsScopes.SPREADSHEETS_READONLY))
@@ -81,7 +81,7 @@ class OrionFragment : Fragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == RC_SIGN_IN) {
+        if (requestCode == RC_SIGN_IN && resultCode == Activity.RESULT_OK) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             handleSignInResult(task)
         }
