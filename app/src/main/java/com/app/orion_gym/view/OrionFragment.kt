@@ -76,13 +76,11 @@ class OrionFragment : Fragment() {
     }
 
     private fun signIn() {
-        val signInIntent = mGoogleSignInClient.signInIntent
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             if (it.resultCode == Activity.RESULT_OK) {
-                val task = GoogleSignIn.getSignedInAccountFromIntent(it.data)
-                handleSignInResult(task)
+                handleSignInResult(GoogleSignIn.getSignedInAccountFromIntent(it.data))
             }
-        }.launch(signInIntent)
+        }.launch(mGoogleSignInClient.signInIntent)
     }
 
     private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
