@@ -18,7 +18,9 @@ import com.app.orion_gym.viewmodel.OrionViewModel
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.app.orion_gym.R
 import com.app.orion_gym.databinding.ContentPreviewBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 abstract class ContentPreviewFragment : Fragment(),View.OnClickListener {
 
     private lateinit var progressBarDialog: AlertDialog
