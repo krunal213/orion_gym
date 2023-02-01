@@ -280,5 +280,4 @@ class OrionViewModel @Inject constructor(application: Application) : AndroidView
         awaitClose {  }
     }
 
-
 }
