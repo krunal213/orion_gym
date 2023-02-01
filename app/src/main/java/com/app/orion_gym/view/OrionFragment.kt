@@ -65,6 +65,7 @@ class OrionFragment : Fragment() {
             requireActivity(),
             GoogleSignInOptions
                 .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(activity?.resources?.getString(R.string.server_client_id) as String)
                 .requestEmail()
                 .requestScopes(Scope(SheetsScopes.SPREADSHEETS))
                 .requestScopes(Scope(SheetsScopes.SPREADSHEETS_READONLY))
