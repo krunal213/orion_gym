@@ -1,7 +1,6 @@
 package com.app.orion_gym.viewmodel
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.liveData
 import com.app.orion_gym.R
@@ -10,7 +9,6 @@ import com.app.orion_gym.Result.Success
 import com.app.orion_gym.Result.Error
 import com.app.orion_gym.exception.*
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential
-import com.google.api.client.http.apache.v2.ApacheHttpTransport
 import com.google.api.client.http.javanet.NetHttpTransport
 import com.google.api.client.json.gson.GsonFactory
 import com.google.api.services.sheets.v4.Sheets
@@ -18,7 +16,6 @@ import kotlinx.coroutines.Dispatchers
 import org.jsoup.Jsoup
 import java.text.SimpleDateFormat
 import java.util.*
-import com.google.api.services.sheets.v4.model.UpdateValuesResponse
 import com.google.api.services.sheets.v4.model.ValueRange
 import com.google.firebase.database.*
 import dagger.hilt.android.lifecycle.HiltViewModel
