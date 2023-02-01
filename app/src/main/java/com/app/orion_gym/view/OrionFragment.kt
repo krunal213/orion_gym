@@ -12,6 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.asLiveData
 import androidx.navigation.findNavController
 import com.app.orion_gym.R
+import com.app.orion_gym.databinding.FragmentOrionBinding
 import com.app.orion_gym.viewmodel.OrionViewModel
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -32,34 +33,41 @@ class OrionFragment : Fragment() {
     private val orionViewModel by activityViewModels<OrionViewModel>()
     private lateinit var mGoogleSignInClient: GoogleSignInClient
     private val RC_SIGN_IN: Int = 2
+    private lateinit var fragmentOrionBinding: FragmentOrionBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.fragment_orion, container, false)
+    ): View {
+        fragmentOrionBinding = FragmentOrionBinding.inflate(inflater, container, false)
+        return fragmentOrionBinding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.findViewById<Button>(R.id.buttonAdmissionForm)
+        fragmentOrionBinding.buttonAdmissionForm
             .setOnClickListener {
-                view.findNavController()
+                it.findNavController()
                     .navigate(R.id.action_orionFragment_to_admissionFormFragment)
             }
-        view.findViewById<Button>(R.id.buttonReceipt)
+        fragmentOrionBinding.buttonReceipt
             .setOnClickListener {
-                view.findNavController()
+                it.findNavController()
                     .navigate(R.id.action_orionFragment_to_receiptFormFragment)
             }
         initGoogleSignInOptions()
     }
 
     private fun initGoogleSignInOptions() {
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestEmail()
-            .requestScopes(Scope(SheetsScopes.SPREADSHEETS))
-            .requestScopes(Scope(SheetsScopes.SPREADSHEETS_READONLY))
-            .build()
-        mGoogleSignInClient = GoogleSignIn.getClient(requireActivity(), gso)
+        mGoogleSignInClient = GoogleSignIn.getClient(
+            requireActivity(),
+            GoogleSignInOptions
+                .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .requestScopes(Scope(SheetsScopes.SPREADSHEETS))
+                .requestScopes(Scope(SheetsScopes.SPREADSHEETS_READONLY))
+                .build()
+        )
         val account = GoogleSignIn.getLastSignedInAccount(requireContext())
         if (account != null) {
             initGoogleAccountCredential(account)

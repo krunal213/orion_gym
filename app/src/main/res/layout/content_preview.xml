@@ -73,7 +73,8 @@
                 android:id="@+id/textInputLayoutName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_buttons_space_admission_form">
+                android:layout_marginTop="@dimen/dimen_buttons_space_admission_form"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editTextName"
@@ -89,7 +90,8 @@
                 android:id="@+id/textInputLayoutPhone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_buttons_space_admission_form">
+                android:layout_marginTop="@dimen/dimen_buttons_space_admission_form"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editTextPhone"
@@ -177,7 +179,8 @@
                 android:id="@+id/textInputLayoutAdmissionDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_buttons_space_admission_form">
+                android:layout_marginTop="@dimen/dimen_buttons_space_admission_form"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editTextAdmissionDate"
@@ -192,7 +195,8 @@
                 android:id="@+id/textInputLayoutNextRenewalDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_buttons_space_admission_form">
+                android:layout_marginTop="@dimen/dimen_buttons_space_admission_form"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editTextNextRenewalDate"
@@ -206,7 +210,8 @@
                 android:id="@+id/textInputLayoutAmount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_buttons_space_admission_form">
+                android:layout_marginTop="@dimen/dimen_buttons_space_admission_form"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editTextAmount"
