@@ -8,14 +8,12 @@ plugins {
 
 android {
     compileSdk 33
-
     defaultConfig {
         applicationId "com.app.orion_gym"
         minSdk 21
         targetSdk 33
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -58,15 +56,12 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:19.2.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
-
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
-
     testImplementation "junit:junit:4.13.2"
     testImplementation "org.robolectric:robolectric:4.9.2"
     implementation "org.jsoup:jsoup:1.13.1"
     implementation 'com.github.tejpratap46:PDFCreatorAndroid:3.0.2'
-
     implementation 'com.google.android.gms:play-services-auth:20.4.1'
     implementation ('com.google.api-client:google-api-client-android:2.0.0'){
         exclude group: 'org.apache.httpcomponents'
@@ -74,20 +69,11 @@ dependencies {
     implementation ('com.google.apis:google-api-services-sheets:v4-rev20220927-2.0.0'){
         exclude group: 'org.apache.httpcomponents'
     }
-
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
-
-    //hilt
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
-
     implementation platform('com.google.firebase:firebase-bom:31.2.0')
     implementation "com.google.firebase:firebase-database-ktx:20.1.0"
     implementation 'com.google.firebase:firebase-database:20.1.0'
-
     testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4'
-
-
-
-
 }
