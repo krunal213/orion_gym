@@ -25,9 +25,11 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential
 import com.google.api.client.util.ExponentialBackOff
 import com.google.api.services.sheets.v4.SheetsScopes
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.first
 import java.util.*
 
+@AndroidEntryPoint
 class OrionFragment : Fragment() {
 
     private val orionViewModel by activityViewModels<OrionViewModel>()

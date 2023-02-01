@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import com.app.orion_gym.R
 import com.app.orion_gym.databinding.ContentPreviewBinding
 import com.app.orion_gym.databinding.FragmentRenewalBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class RenewalFragment : ContentPreviewFragment() {
 
     private lateinit var fragmentRenewalBinding : FragmentRenewalBinding
