@@ -24,4 +24,11 @@ class AdmissionFormPreviewFragment : ContentPreviewFragment() {
 
     override fun getSubtitle(): String = resources.getString(R.string.title_admission_form)
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        fragmentAdmissionFormBinding
+            .buttonSubmit
+            .setOnClickListener(this)
+    }
+
 }

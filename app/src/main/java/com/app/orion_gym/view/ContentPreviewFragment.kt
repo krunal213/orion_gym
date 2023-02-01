@@ -19,19 +19,21 @@ import com.google.android.material.datepicker.MaterialDatePicker
 import com.app.orion_gym.R
 import com.app.orion_gym.databinding.ContentPreviewBinding
 
-abstract class ContentPreviewFragment : Fragment() {
+abstract class ContentPreviewFragment : Fragment(),View.OnClickListener {
 
     private lateinit var progressBarDialog: AlertDialog
     private val orionViewModel by activityViewModels<OrionViewModel>()
+    private lateinit var admissionNumber : CharSequence
+    private lateinit var todayDate : String
+    private lateinit var binding : ContentPreviewBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val binding : ContentPreviewBinding = getContentPreviewBinding()
-
+        binding = getContentPreviewBinding()
         binding.textViewSubtitle.text = getSubtitle()
-        val admissionNumber = orionViewModel.getAdmissionNo()
+        admissionNumber = orionViewModel.getAdmissionNo()
         binding.textViewAdmissionNo.text = admissionNumber
-        val todayDate = orionViewModel.getCurrentDateAndTime()
+        todayDate = orionViewModel.getCurrentDateAndTime()
         binding.textViewAdmissionDate.text = todayDate
 
         with(binding.editTextName) {
@@ -85,58 +87,6 @@ abstract class ContentPreviewFragment : Fragment() {
                 }
             }
         }
-
-        view.findViewById<Button>(R.id.buttonSubmit)
-            .setOnClickListener {
-                orionViewModel.validateAdmissionForm(
-                    admissionNumber = admissionNumber.toString(),
-                    todayDate = todayDate.toString(),
-                    name = binding.editTextName.text.toString().trim(),
-                    phone = binding.editTextPhone.text.toString().trim(),
-                    admissionFor = binding.radioGroupAdmissionFor
-                        .findViewById<RadioButton>(
-                            binding.radioGroupAdmissionFor.checkedRadioButtonId
-                        )?.text.toString().trim(),
-                    duration = binding.radioGroupForYear
-                        .findViewById<RadioButton>(
-                            binding.radioGroupForYear.checkedRadioButtonId
-                        )?.text.toString().trim(),
-                    admissionDate = binding.editTextAdmissionDate.text.toString().trim(),
-                    newRenewalDate = binding.editTextNextRenewalDate.text.toString().trim(),
-                    amount = binding.editTextAmount.text.toString().trim(),
-                ).observe(viewLifecycleOwner){
-                    when (it) {
-                        is Result.Loading->{
-                            showProgressBar()
-                        }
-                        is Result.Success -> {
-                            with(activity as AppCompatActivity) {
-                                window.decorView.findViewById<View>(android.R.id.content)
-                                    .clearFocus()
-                                generatePdfFromHTML(
-                                    it.data,
-                                    "${binding.editTextName.text.toString().trim()}_$todayDate"
-                                )
-                            }
-                            cancelProgressBar()
-                        }
-                        is Result.Error -> {
-                            when (it.exception) {
-                                is InvalidNameException -> {
-                                    binding.textInputLayoutName.error = it.exception.message
-                                }
-                                is InvalidPhoneNumberException -> {
-                                    binding.textInputLayoutPhone.error = it.exception.message
-                                }
-                                is InvalidAmountException -> {
-                                    binding.textInputLayoutAmount.error = it.exception.message
-                                }
-                            }
-                            cancelProgressBar()
-                        }
-                    }
-                }
-            }
     }
 
     abstract fun getContentPreviewBinding(): ContentPreviewBinding
@@ -151,4 +101,54 @@ abstract class ContentPreviewFragment : Fragment() {
         progressBarDialog.dismiss()
     }
 
+    override fun onClick(p0: View?) {
+        orionViewModel.validateAdmissionForm(
+            admissionNumber = admissionNumber.toString(),
+            todayDate = todayDate.toString(),
+            name = binding.editTextName.text.toString().trim(),
+            phone = binding.editTextPhone.text.toString().trim(),
+            admissionFor = binding.radioGroupAdmissionFor
+                .findViewById<RadioButton>(
+                    binding.radioGroupAdmissionFor.checkedRadioButtonId
+                )?.text.toString().trim(),
+            duration = binding.radioGroupForYear
+                .findViewById<RadioButton>(
+                    binding.radioGroupForYear.checkedRadioButtonId
+                )?.text.toString().trim(),
+            admissionDate = binding.editTextAdmissionDate.text.toString().trim(),
+            newRenewalDate = binding.editTextNextRenewalDate.text.toString().trim(),
+            amount = binding.editTextAmount.text.toString().trim(),
+        ).observe(viewLifecycleOwner){
+            when (it) {
+                is Result.Loading->{
+                    showProgressBar()
+                }
+                is Result.Success -> {
+                    with(activity as AppCompatActivity) {
+                        window.decorView.findViewById<View>(android.R.id.content)
+                            .clearFocus()
+                        generatePdfFromHTML(
+                            it.data,
+                            "${binding.editTextName.text.toString().trim()}_$todayDate"
+                        )
+                    }
+                    cancelProgressBar()
+                }
+                is Result.Error -> {
+                    when (it.exception) {
+                        is InvalidNameException -> {
+                            binding.textInputLayoutName.error = it.exception.message
+                        }
+                        is InvalidPhoneNumberException -> {
+                            binding.textInputLayoutPhone.error = it.exception.message
+                        }
+                        is InvalidAmountException -> {
+                            binding.textInputLayoutAmount.error = it.exception.message
+                        }
+                    }
+                    cancelProgressBar()
+                }
+            }
+        }
+    }
 }

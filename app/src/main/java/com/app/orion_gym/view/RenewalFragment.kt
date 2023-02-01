@@ -24,4 +24,11 @@ class RenewalFragment : ContentPreviewFragment() {
 
     override fun getSubtitle(): String = resources.getString(R.string.title_receipt)
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        fragmentRenewalBinding
+            .buttonSubmit
+            .setOnClickListener(this)
+    }
+
 }
